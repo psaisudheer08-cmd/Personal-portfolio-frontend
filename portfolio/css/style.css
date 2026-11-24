@@ -1,0 +1,990 @@
+/* ==========================================================================
+   TABLE OF CONTENTS
+   ==========================================================================
+   1. CSS Variables & Theme Configuration (:root)
+   2. Reset & Base Typography
+   3. Accessibility & Skip Link
+   4. Reusable Utility Classes & Buttons
+   5. Section Header & Layout Containers
+   6. Header & Navigation Bar
+   7. Hero / Profile Section
+   8. About & Education Section
+   9. Skills Section
+   10. Projects Section
+   11. Achievements Section
+   12. Contact Section & Form
+   13. Footer
+   14. Responsive Design (Media Queries: Tablet 768px & Mobile 480px)
+   ========================================================================== */
+
+/* ==========================================================================
+   1. CSS VARIABLES & THEME CONFIGURATION
+   Why we use CSS variables:
+   Variables let us define color codes and styling values in one central place.
+   If you ever want to change the primary color of your website from blue to
+   green, you only need to change it here once, and the whole site updates!
+   ========================================================================== */
+:root {
+  /* Brand & Theme Colors */
+  --primary-color: #1d4ed8;       /* Deep royal blue - primary action color */
+  --primary-hover: #1e40af;       /* Darker blue for hover states */
+  --accent-color: #0284c7;        /* Sky blue for secondary accents */
+  --accent-hover: #0369a1;        /* Darker sky blue */
+
+  /* Neutral Typography Colors (Tested for WCAG AA/AAA contrast) */
+  --text-primary: #0f172a;        /* Deep navy slate for main headings and text */
+  --text-secondary: #475569;      /* Muted slate for descriptions and dates */
+  --text-light: #ffffff;          /* White text on dark buttons & badges */
+
+  /* Background Colors (Alternating sections creates visual rhythm) */
+  --bg-primary: #ffffff;          /* Crisp clean white */
+  --bg-secondary: #f8fafc;        /* Soft cool off-white */
+  --bg-card: #ffffff;             /* Background for all content cards */
+
+  /* Borders & Shadows */
+  --border-color: #e2e8f0;        /* Subtle divider border */
+  --border-accent: #cbd5e1;       /* Slightly darker border for form inputs */
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 12px 20px -3px rgba(0, 0, 0, 0.12), 0 4px 6px -4px rgba(0, 0, 0, 0.06);
+
+  /* Spacing & Border Radius */
+  --radius-sm: 6px;               /* Small rounding for badges and inputs */
+  --radius-md: 10px;              /* Medium rounding for buttons and cards */
+  --radius-lg: 16px;              /* Large rounding for cards & containers */
+  --radius-full: 9999px;          /* Pill-shaped badges */
+  --transition-speed: 0.3s;       /* Smooth transition duration for hovers */
+
+  /* Typography Stack */
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* ==========================================================================
+   2. RESET & BASE TYPOGRAPHY
+   Why box-sizing: border-box:
+   By default, padding adds to an element's total width, causing overflow bugs.
+   border-box makes width include padding and border, ensuring exact sizing.
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Smooth scrolling makes anchor links slide gracefully instead of jumping */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  /* Prevent horizontal scrollbars from ever showing */
+  overflow-x: hidden;
+}
+
+/* Media: make all images responsive by default */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Remove default list bullets and list padding */
+ul {
+  list-style: none;
+}
+
+/* Remove default link underlines */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ==========================================================================
+   3. ACCESSIBILITY & SKIP LINK
+   Visible focus indicators are critical for visitors navigating via keyboard.
+   ========================================================================== */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+/* Skip link: hidden offscreen until a keyboard user presses Tab */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 10px 18px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  z-index: 1000;
+  transition: top var(--transition-speed) ease;
+}
+
+.skip-link:focus {
+  top: 20px;
+}
+
+/* ==========================================================================
+   4. REUSABLE UTILITY CLASSES & BUTTONS
+   These reusable classes prevent writing repeated styles throughout the CSS.
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background-color var(--transition-speed) ease,
+              color var(--transition-speed) ease,
+              transform var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease;
+}
+
+/* Primary Button: filled background */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  box-shadow: 0 2px 4px rgba(29, 78, 216, 0.25);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(29, 78, 216, 0.35);
+}
+
+/* Secondary Button: subtle tinted background */
+.btn-secondary {
+  background-color: var(--bg-secondary);
+  color: var(--primary-color);
+  border-color: var(--border-color);
+}
+
+.btn-secondary:hover {
+  background-color: #e2e8f0;
+  border-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+/* Outline Button: transparent with clean border */
+.btn-outline {
+  background-color: transparent;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   5. SECTION HEADER & LAYOUT CONTAINERS
+   Consistent layout padding and centered content containers.
+   ========================================================================== */
+.section-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 40px auto;
+}
+
+/* ==========================================================================
+   6. HEADER & NAVIGATION BAR
+   We use Flexbox with justify-content: space-between to position the logo
+   on the left and the nav items on the right.
+   ========================================================================== */
+.header {
+  position: sticky;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 500;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.logo-dot {
+  color: var(--primary-color);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.nav-item {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: 6px 0;
+  border-bottom: 2px solid transparent;
+  transition: color var(--transition-speed) ease,
+              border-color var(--transition-speed) ease;
+}
+
+.nav-item:hover {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+/* ==========================================================================
+   7. HERO / PROFILE SECTION (id="home")
+   Flexbox container centers the profile image and text horizontally.
+   ========================================================================== */
+.hero-section {
+  background-color: var(--bg-primary);
+  padding: 80px 20px;
+}
+
+.hero-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+.hero-image-wrapper {
+  flex: 0 0 240px;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-img {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  border: 4px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+}
+
+.hero-content {
+  flex: 1 1 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hero-greeting {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 4px;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.hero-role {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-bottom: 16px;
+}
+
+.hero-description {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+  max-width: 540px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   8. ABOUT & EDUCATION SECTION (id="about")
+   Alternating background: soft off-white.
+   ========================================================================== */
+.about-section {
+  background-color: var(--bg-secondary);
+  padding: 80px 20px;
+}
+
+.about-bio-card {
+  background-color: var(--bg-card);
+  padding: 28px 32px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 40px;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+.subsection-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.education-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.education-card {
+  background-color: var(--bg-card);
+  padding: 24px 28px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease;
+}
+
+.education-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.education-badge {
+  display: inline-block;
+  background-color: #eff6ff;
+  color: var(--primary-color);
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  margin-bottom: 10px;
+  border: 1px solid #bfdbfe;
+}
+
+.education-degree {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.education-institution {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-bottom: 8px;
+}
+
+.education-details {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   9. SKILLS SECTION (id="skills")
+   Flexbox layout with flex-wrap: wrap creates a dynamic grid of skill cards.
+   ========================================================================== */
+.skills-section {
+  background-color: var(--bg-primary);
+  padding: 80px 20px;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+
+.skill-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  /* Flex item calculation: 3 cards per row on desktop, min width 280px */
+  flex: 1 1 300px;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease,
+              border-color var(--transition-speed) ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent-color);
+}
+
+.skill-icon-box {
+  background-color: #eff6ff;
+  color: var(--primary-color);
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 14px;
+  border: 1px solid #bfdbfe;
+}
+
+.skill-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.skill-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  flex-grow: 1;
+}
+
+.skill-level {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  background-color: #f0f9ff;
+  border: 1px solid #bae6fd;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+/* ==========================================================================
+   10. PROJECTS SECTION (id="projects")
+   Alternating background: soft off-white. Each card includes an image,
+   content body, and an action button.
+   ========================================================================== */
+.projects-section {
+  background-color: var(--bg-secondary);
+  padding: 80px 20px;
+}
+
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  justify-content: center;
+}
+
+.project-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  /* 3 cards per row on large screens */
+  flex: 1 1 300px;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+.project-image-wrapper {
+  width: 100%;
+  background-color: #1e293b;
+  overflow: hidden;
+}
+
+.project-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.project-content {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  background-color: #eff6ff;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 10px;
+}
+
+.project-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.project-description {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.project-footer {
+  margin-top: auto;
+}
+
+.project-footer .btn {
+  width: 100%;
+}
+
+/* ==========================================================================
+   11. ACHIEVEMENTS SECTION (id="achievements")
+   Clean white background with horizontal cards that flex icon + description.
+   ========================================================================== */
+.achievements-section {
+  background-color: var(--bg-primary);
+  padding: 80px 20px;
+}
+
+.achievements-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.achievement-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  transition: transform var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.achievement-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.achievement-info {
+  flex: 1 1 auto;
+}
+
+.achievement-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.achievement-issuer {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  margin-bottom: 8px;
+}
+
+.achievement-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   12. CONTACT SECTION & FORM (id="contact")
+   Alternating background: soft off-white. Two-column Flexbox layout:
+   Contact details on the left, accessible message form on the right.
+   ========================================================================== */
+.contact-section {
+  background-color: var(--bg-secondary);
+  padding: 80px 20px;
+}
+
+.contact-wrapper {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.contact-info {
+  flex: 1 1 320px;
+  background-color: var(--bg-card);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+}
+
+.contact-info-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.contact-info-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 0.5px;
+}
+
+.contact-link {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--primary-color);
+  word-break: break-all;
+  transition: color var(--transition-speed) ease;
+}
+
+.contact-link:hover {
+  color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+.contact-form-container {
+  flex: 1 1 360px;
+  background-color: var(--bg-card);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--text-primary);
+  background-color: #ffffff;
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+}
+
+.form-textarea {
+  resize: vertical;
+}
+
+.btn-submit {
+  width: 100%;
+  margin-top: 6px;
+}
+
+/* ==========================================================================
+   13. FOOTER
+   Clean, dark footer for high contrast and strong grounding.
+   ========================================================================== */
+.footer {
+  background-color: #0f172a;
+  color: #f8fafc;
+  padding: 32px 20px;
+  border-top: 1px solid #1e293b;
+}
+
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-copyright {
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.back-to-top {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #38bdf8;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-speed) ease,
+              background-color var(--transition-speed) ease;
+}
+
+.back-to-top:hover {
+  color: #ffffff;
+  background-color: rgba(56, 189, 248, 0.15);
+}
+
+/* ==========================================================================
+   14. RESPONSIVE DESIGN (MEDIA QUERIES)
+   We use 2 clear media queries to adjust our Flexbox layouts smoothly:
+   - Tablet (~768px): adjust padding, stack the hero, wrap navigation
+   - Mobile (~480px): stack all cards in 1 column, full-width buttons
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   TABLET BREAKPOINT (Screens 768px wide and below)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  /* Reduce section vertical padding for smaller screens */
+  .hero-section,
+  .about-section,
+  .skills-section,
+  .projects-section,
+  .achievements-section,
+  .contact-section {
+    padding: 50px 16px;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+  }
+
+  /* Center navigation items when logo and links wrap */
+  .nav-container {
+    justify-content: center;
+    gap: 14px;
+    padding: 14px 16px;
+  }
+
+  .nav-links {
+    justify-content: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  /* Center the hero section elements */
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+
+  .hero-content {
+    align-items: center;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero-title {
+    font-size: 2.3rem;
+  }
+
+  /* Stack contact columns vertically */
+  .contact-wrapper {
+    flex-direction: column;
+  }
+
+  .contact-info,
+  .contact-form-container {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  /* Center footer contents */
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   MOBILE BREAKPOINT (Screens 480px wide and below)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  /* Tighten spacing for compact smartphone screens */
+  .hero-section,
+  .about-section,
+  .skills-section,
+  .projects-section,
+  .achievements-section,
+  .contact-section {
+    padding: 40px 14px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+  }
+
+  /* Smaller profile photo on mobile */
+  .profile-img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .hero-title {
+    font-size: 1.9rem;
+  }
+
+  .hero-role {
+    font-size: 1.1rem;
+  }
+
+  /* Full-width action buttons on phones for easy tapping */
+  .hero-buttons {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+  }
+
+  /* Navigation links: compact wrapping list */
+  .nav-links {
+    gap: 10px 14px;
+  }
+
+  .nav-item {
+    font-size: 0.9rem;
+  }
+
+  /* Cards expand to 100% width on mobile */
+  .skill-card,
+  .project-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .about-bio-card,
+  .education-card,
+  .contact-info,
+  .contact-form-container {
+    padding: 20px 16px;
+  }
+
+  /* Stack achievement card icon and text */
+  .achievement-card {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

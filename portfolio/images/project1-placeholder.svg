@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="proj1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accent1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+  </defs>
+  <!-- Browser Frame Background -->
+  <rect width="800" height="450" rx="16" fill="url(#proj1Grad)"/>
+  
+  <!-- Window Header Bar -->
+  <rect width="800" height="48" rx="16" fill="#334155"/>
+  <rect y="36" width="800" height="12" fill="#334155"/>
+  
+  <!-- Window Control Dots -->
+  <circle cx="30" cy="24" r="7" fill="#ef4444"/>
+  <circle cx="54" cy="24" r="7" fill="#f59e0b"/>
+  <circle cx="78" cy="24" r="7" fill="#10b981"/>
+  
+  <!-- URL Bar -->
+  <rect x="120" y="14" width="560" height="20" rx="6" fill="#1e293b"/>
+  <text x="400" y="28" font-family="system-ui, monospace" font-size="11" fill="#94a3b8" text-anchor="middle">
+    https://yourportfolio.dev/projects/student-portal
+  </text>
+
+  <!-- Content Representation -->
+  <rect x="60" y="80" width="280" height="150" rx="8" fill="#1e293b" stroke="#475569" stroke-width="2"/>
+  <rect x="80" y="105" width="140" height="16" rx="4" fill="url(#accent1)"/>
+  <rect x="80" y="135" width="230" height="10" rx="3" fill="#64748b"/>
+  <rect x="80" y="155" width="200" height="10" rx="3" fill="#475569"/>
+  <rect x="80" y="175" width="160" height="10" rx="3" fill="#475569"/>
+
+  <!-- Code Preview Box -->
+  <rect x="370" y="80" width="370" height="220" rx="8" fill="#020617" stroke="#334155" stroke-width="2"/>
+  <text x="390" y="120" font-family="monospace" font-size="14" fill="#38bdf8">&lt;div class="student-card"&gt;</text>
+  <text x="410" y="150" font-family="monospace" font-size="14" fill="#a78bfa">  &lt;h2&gt;Project One&lt;/h2&gt;</text>
+  <text x="410" y="180" font-family="monospace" font-size="14" fill="#34d399">  &lt;p&gt;Built with HTML &amp; CSS&lt;/p&gt;</text>
+  <text x="390" y="210" font-family="monospace" font-size="14" fill="#38bdf8">&lt;/div&gt;</text>
+
+  <!-- Big Banner Center -->
+  <rect x="60" y="325" width="680" height="85" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="400" y="362" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#f8fafc" text-anchor="middle">
+    Project 1 Preview Placeholder
+  </text>
+  <text x="400" y="388" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#94a3b8" text-anchor="middle">
+    Replace with your screenshot (800 x 450 px)
+  </text>
+</svg>

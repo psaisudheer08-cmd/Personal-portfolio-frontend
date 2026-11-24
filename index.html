@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Character encoding ensures all symbols and text render properly -->
+  <meta charset="UTF-8">
+
+  <!-- Viewport meta tag is essential for mobile responsiveness -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- A clear and descriptive title helps SEO and shows nicely in browser tabs -->
+  <title>Your Name | B.Tech CSE Portfolio</title>
+
+  <!-- External Stylesheet: all styling rules are placed in style.css -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ====================================================================
+       ACCESSIBILITY: SKIP LINK
+       This hidden link lets keyboard and screen-reader users skip directly
+       to the main content without tabbing through all navigation links first.
+       ==================================================================== -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- ====================================================================
+       SECTION A: HEADER & NAVIGATION
+       The <header> holds your website logo/name and the main navigation bar.
+       We use the semantic <nav> tag with an aria-label for accessibility.
+       ==================================================================== -->
+  <header class="header">
+    <nav class="nav-container" aria-label="Main Website Navigation">
+      <!-- Logo or brand name linking back to the top -->
+      <a href="#home" class="logo">Your Name<span class="logo-dot">.</span></a>
+
+      <!-- Unordered list of navigation links to each page section -->
+      <ul class="nav-links">
+        <li><a href="#home" class="nav-item">Home</a></li>
+        <li><a href="#about" class="nav-item">About</a></li>
+        <li><a href="#skills" class="nav-item">Skills</a></li>
+        <li><a href="#projects" class="nav-item">Projects</a></li>
+        <li><a href="#achievements" class="nav-item">Achievements</a></li>
+        <li><a href="#contact" class="nav-item">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ====================================================================
+       MAIN CONTENT CONTAINER
+       The <main> tag wraps the unique primary content of this webpage.
+       ==================================================================== -->
+  <main id="main-content">
+
+    <!-- ==================================================================
+         SECTION B: HERO / PROFILE (id="home")
+         This is the first screen visitors see. It introduces who you are,
+         what you study, and gives two quick action buttons.
+         ================================================================== -->
+    <section id="home" class="hero-section">
+      <div class="hero-container">
+
+        <!-- Profile Photo -->
+        <div class="hero-image-wrapper">
+          <img 
+            src="images/profile-placeholder.svg" 
+            alt="Portrait photograph of Your Name, first-year B.Tech CSE student" 
+            class="profile-img"
+          >
+        </div>
+
+        <!-- Introduction Text -->
+        <div class="hero-content">
+          <p class="hero-greeting">Hello, I'm</p>
+          <!-- Single <h1> tag on the page for SEO & accessibility hierarchy -->
+          <h1 class="hero-title">Your Name</h1>
+          <p class="hero-role">First-Year B.Tech CSE Student</p>
+          <p class="hero-description">
+            I am an enthusiastic Computer Science undergraduate at Your College.
+            I love turning ideas into clean, accessible web pages using HTML, CSS,
+            and Flexbox, and I am excited to explore modern software engineering.
+          </p>
+
+          <!-- Call to action buttons -->
+          <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="#contact" class="btn btn-secondary">Contact Me</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION C: ABOUT & EDUCATION (id="about")
+         Gives background information about your interests and lists your
+         formal academic background in a clean, readable layout.
+         ================================================================== -->
+    <section id="about" class="about-section">
+      <div class="section-container">
+        <!-- Section Heading -->
+        <h2 class="section-title">About &amp; Education</h2>
+        <p class="section-subtitle">A glimpse into my background, passions, and academic foundation</p>
+
+        <!-- About bio paragraph -->
+        <div class="about-bio-card">
+          <p>
+            Welcome to my portfolio! I started my computer science journey driven by a
+            curiosity for how digital products work behind the scenes. Currently, I am
+            building a solid grounding in programming fundamentals, data structures in C,
+            and responsive front-end web design. When I am not coding, I enjoy learning
+            new tech concepts, collaborating on student projects, and solving logic puzzles.
+          </p>
+        </div>
+
+        <!-- Education Sub-section -->
+        <h3 class="subsection-title">Education History</h3>
+        <div class="education-container">
+
+          <!-- College Card -->
+          <article class="education-card">
+            <div class="education-badge">2024 - 2028 (Expected)</div>
+            <h4 class="education-degree">B.Tech in Computer Science &amp; Engineering</h4>
+            <p class="education-institution">Your College of Engineering &amp; Technology, Your City</p>
+            <p class="education-details">Current CGPA: 8.5 / 10.0 (Semester 1). Coursework: Problem Solving through C, Digital Logic, Web Design Basics.</p>
+          </article>
+
+          <!-- Senior Secondary School Card -->
+          <article class="education-card">
+            <div class="education-badge">2022 - 2024</div>
+            <h4 class="education-degree">Higher Secondary Education (Class XII - CBSE)</h4>
+            <p class="education-institution">Your High School Name, Your City</p>
+            <p class="education-details">Major: Physics, Chemistry, Mathematics (PCM) &amp; Computer Science. Scored: 92% aggregate.</p>
+          </article>
+
+          <!-- Secondary School Card -->
+          <article class="education-card">
+            <div class="education-badge">2020 - 2022</div>
+            <h4 class="education-degree">Secondary School Certificate (Class X - CBSE)</h4>
+            <p class="education-institution">Your High School Name, Your City</p>
+            <p class="education-details">Scored: 94% aggregate. Active participant in science fairs and school coding club.</p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION D: SKILLS (id="skills")
+         Highlights your current programming languages, web fundamentals,
+         and tools, with friendly beginner-friendly proficiency badges.
+         ================================================================== -->
+    <section id="skills" class="skills-section">
+      <div class="section-container">
+        <h2 class="section-title">Technical Skills</h2>
+        <p class="section-subtitle">Technologies and tools I have learned and practice regularly</p>
+
+        <!-- Flexbox container for skill cards -->
+        <div class="skills-grid">
+
+          <!-- Skill 1 -->
+          <article class="skill-card">
+            <div class="skill-icon-box">HTML</div>
+            <h3 class="skill-name">HTML5</h3>
+            <p class="skill-desc">Semantic elements, clean structure, accessibility, and modern forms.</p>
+            <span class="skill-level">Proficient</span>
+          </article>
+
+          <!-- Skill 2 -->
+          <article class="skill-card">
+            <div class="skill-icon-box">CSS</div>
+            <h3 class="skill-name">CSS3</h3>
+            <p class="skill-desc">CSS variables, styling, transitions, typography, and box model.</p>
+            <span class="skill-level">Intermediate</span>
+          </article>
+
+          <!-- Skill 3 -->
+          <article class="skill-card">
+            <div class="skill-icon-box">FLEX</div>
+            <h3 class="skill-name">Flexbox</h3>
+            <p class="skill-desc">Responsive multi-column layouts, alignment, and flex-wrap mechanics.</p>
+            <span class="skill-level">Intermediate</span>
+          </article>
+
+          <!-- Skill 4 -->
+          <article class="skill-card">
+            <div class="skill-icon-box">C</div>
+            <h3 class="skill-name">C Language</h3>
+            <p class="skill-desc">Pointers, arrays, memory management, and college lab programming.</p>
+            <span class="skill-level">Learning</span>
+          </article>
+
+          <!-- Skill 5 -->
+          <article class="skill-card">
+            <div class="skill-icon-box">PY</div>
+            <h3 class="skill-name">Python</h3>
+            <p class="skill-desc">Basic syntax, control flow, functions, and algorithmic problem solving.</p>
+            <span class="skill-level">Beginner</span>
+          </article>
+
+          <!-- Skill 6 -->
+          <article class="skill-card">
+            <div class="skill-icon-box">GIT</div>
+            <h3 class="skill-name">Git &amp; GitHub</h3>
+            <p class="skill-desc">Version control, creating commits, branches, and hosting projects.</p>
+            <span class="skill-level">Learning</span>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION E: PROJECTS (id="projects")
+         Displays at least 3 featured projects with screenshots, summaries,
+         technology tags, and links to see the code or live preview.
+         ================================================================== -->
+    <section id="projects" class="projects-section">
+      <div class="section-container">
+        <h2 class="section-title">Featured Projects</h2>
+        <p class="section-subtitle">Real-world coding exercises and academic assignments I have built</p>
+
+        <!-- Flexbox container for project cards -->
+        <div class="projects-grid">
+
+          <!-- Project Card 1 -->
+          <article class="project-card">
+            <div class="project-image-wrapper">
+              <img 
+                src="images/project1-placeholder.svg" 
+                alt="Preview screenshot of Personal Portfolio Website project" 
+                class="project-img"
+              >
+            </div>
+            <div class="project-content">
+              <span class="project-tag">Web Development</span>
+              <h3 class="project-title">Responsive Student Portfolio</h3>
+              <p class="project-description">
+                A single-page personal website crafted using semantic HTML5 and pure CSS Flexbox.
+                Fully accessible, keyboard navigable, and responsive on all devices without JavaScript.
+              </p>
+              <div class="project-footer">
+                <a href="#home" class="btn btn-outline">View Project</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project Card 2 -->
+          <article class="project-card">
+            <div class="project-image-wrapper">
+              <img 
+                src="images/project2-placeholder.svg" 
+                alt="Preview screenshot of Interactive Quiz Webpage project" 
+                class="project-img"
+              >
+            </div>
+            <div class="project-content">
+              <span class="project-tag">HTML &amp; CSS Layouts</span>
+              <h3 class="project-title">Interactive Quiz Card UI</h3>
+              <p class="project-description">
+                A clean quiz interface demonstrating modern form controls, radio buttons,
+                custom focus outlines, and smooth CSS transitions designed for peer college study groups.
+              </p>
+              <div class="project-footer">
+                <a href="#projects" class="btn btn-outline">View Project</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project Card 3 -->
+          <article class="project-card">
+            <div class="project-image-wrapper">
+              <img 
+                src="images/project3-placeholder.svg" 
+                alt="Preview screenshot of C Language Calculator application" 
+                class="project-img"
+              >
+            </div>
+            <div class="project-content">
+              <span class="project-tag">C Programming</span>
+              <h3 class="project-title">Console Scientific Calculator</h3>
+              <p class="project-description">
+                A command-line tool implemented in C supporting arithmetic calculations,
+                logarithmic functions, and trigonometric operations with modular functions and input validation.
+              </p>
+              <div class="project-footer">
+                <a href="#projects" class="btn btn-outline">View Project</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION F: ACHIEVEMENTS (id="achievements")
+         Displays milestones, hackathon participation, academic awards,
+         and certifications to show continuous learning.
+         ================================================================== -->
+    <section id="achievements" class="achievements-section">
+      <div class="section-container">
+        <h2 class="section-title">Achievements &amp; Certificates</h2>
+        <p class="section-subtitle">Milestones and recognitions earned along my educational path</p>
+
+        <!-- Flexbox container for achievement cards -->
+        <div class="achievements-grid">
+
+          <!-- Achievement 1 -->
+          <article class="achievement-card">
+            <div class="achievement-icon">🏆</div>
+            <div class="achievement-info">
+              <h3 class="achievement-title">Smart India Hackathon (College Round)</h3>
+              <p class="achievement-issuer">College Innovation Cell &bull; 2024</p>
+              <p class="achievement-desc">
+                Shortlisted among the top 10 first-year student teams for proposing a student-friendly
+                campus resource tracker using simple front-end prototypes.
+              </p>
+            </div>
+          </article>
+
+          <!-- Achievement 2 -->
+          <article class="achievement-card">
+            <div class="achievement-icon">📜</div>
+            <div class="achievement-info">
+              <h3 class="achievement-title">Certificate: Python for Problem Solving</h3>
+              <p class="achievement-issuer">NPTEL / Coursera &bull; 2024</p>
+              <p class="achievement-desc">
+                Completed a rigorous 8-week course covering core logic, data structures, and
+                algorithmic problem-solving with an overall score of 88%.
+              </p>
+            </div>
+          </article>
+
+          <!-- Achievement 3 -->
+          <article class="achievement-card">
+            <div class="achievement-icon">⭐</div>
+            <div class="achievement-info">
+              <h3 class="achievement-title">Academic Merit Award - High School</h3>
+              <p class="achievement-issuer">Your High School &bull; 2024</p>
+              <p class="achievement-desc">
+                Conferred the Certificate of Academic Distinction for securing top marks in
+                Mathematics and Computer Science in the CBSE Class XII Board Examination.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================================
+         SECTION G: CONTACT (id="contact")
+         Provides contact info (email, phone, LinkedIn, GitHub) and a
+         styled HTML form for visitors to leave a message.
+         ================================================================== -->
+    <section id="contact" class="contact-section">
+      <div class="section-container">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-subtitle">Have a question, feedback, or an internship opportunity? Reach out!</p>
+
+        <!-- Two-column Flexbox layout for Contact: Info on left, Form on right -->
+        <div class="contact-wrapper">
+
+          <!-- Contact Details Column -->
+          <div class="contact-info">
+            <h3 class="contact-info-title">Contact Information</h3>
+            <p class="contact-info-text">
+              I am always open to discussing new college projects, study collaborations,
+              or beginner developer opportunities. Feel free to connect!
+            </p>
+
+            <ul class="contact-list">
+              <!-- Email link -->
+              <li class="contact-item">
+                <span class="contact-label">Email:</span>
+                <a href="mailto:your.email@example.com" class="contact-link">your.email@example.com</a>
+              </li>
+              <!-- Phone link -->
+              <li class="contact-item">
+                <span class="contact-label">Phone:</span>
+                <a href="tel:+919876543210" class="contact-link">+91 98765 43210</a>
+              </li>
+              <!-- LinkedIn link -->
+              <li class="contact-item">
+                <span class="contact-label">LinkedIn:</span>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer" class="contact-link">linkedin.com/in/yourprofile</a>
+              </li>
+              <!-- GitHub link -->
+              <li class="contact-item">
+                <span class="contact-label">GitHub:</span>
+                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="contact-link">github.com/yourusername</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact Form Column (Design only, no backend) -->
+          <div class="contact-form-container">
+            <h3 class="contact-info-title">Send Me a Message</h3>
+            <!-- Note for student: this form submits nowhere (action="#") as it is pure HTML/CSS -->
+            <form action="#" method="post" class="contact-form">
+              
+              <!-- Name Input Group -->
+              <div class="form-group">
+                <label for="user-name" class="form-label">Full Name</label>
+                <input 
+                  type="text" 
+                  id="user-name" 
+                  name="user-name" 
+                  class="form-input" 
+                  placeholder="e.g. Aditi Sharma" 
+                  required
+                >
+              </div>
+
+              <!-- Email Input Group -->
+              <div class="form-group">
+                <label for="user-email" class="form-label">Email Address</label>
+                <input 
+                  type="email" 
+                  id="user-email" 
+                  name="user-email" 
+                  class="form-input" 
+                  placeholder="e.g. aditi@example.com" 
+                  required
+                >
+              </div>
+
+              <!-- Message Textarea Group -->
+              <div class="form-group">
+                <label for="user-message" class="form-label">Your Message</label>
+                <textarea 
+                  id="user-message" 
+                  name="user-message" 
+                  class="form-textarea" 
+                  rows="5" 
+                  placeholder="Write your message here..." 
+                  required
+                ></textarea>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary btn-submit">Send Message</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       SECTION H: FOOTER
+       Includes copyright statement and a convenient "Back to top" link.
+       ==================================================================== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <p class="footer-copyright">
+        &copy; 2024 Your Name. Built with semantic HTML &amp; CSS Flexbox.
+      </p>
+      <!-- Smooth scroll back to top of the page -->
+      <a href="#home" class="back-to-top">Back to top &uarr;</a>
+    </div>
+  </footer>
+
+</body>
+</html>

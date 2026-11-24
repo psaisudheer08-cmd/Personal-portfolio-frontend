@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="proj2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+    <linearGradient id="accent2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="800" height="450" rx="16" fill="url(#proj2Grad)"/>
+  
+  <!-- Window Header Bar -->
+  <rect width="800" height="48" rx="16" fill="#4338ca"/>
+  <rect y="36" width="800" height="12" fill="#4338ca"/>
+  
+  <!-- Window Control Dots -->
+  <circle cx="30" cy="24" r="7" fill="#f87171"/>
+  <circle cx="54" cy="24" r="7" fill="#fbbf24"/>
+  <circle cx="78" cy="24" r="7" fill="#34d399"/>
+  
+  <!-- URL Bar -->
+  <rect x="120" y="14" width="560" height="20" rx="6" fill="#312e81"/>
+  <text x="400" y="28" font-family="system-ui, monospace" font-size="11" fill="#c7d2fe" text-anchor="middle">
+    https://yourportfolio.dev/projects/interactive-quiz
+  </text>
+
+  <!-- Interactive Grid Graphic -->
+  <rect x="80" y="80" width="180" height="170" rx="12" fill="#3730a3" stroke="#6366f1" stroke-width="2"/>
+  <circle cx="170" cy="140" r="30" fill="url(#accent2)"/>
+  <rect x="110" y="195" width="120" height="14" rx="4" fill="#c7d2fe"/>
+
+  <rect x="310" y="80" width="180" height="170" rx="12" fill="#3730a3" stroke="#6366f1" stroke-width="2"/>
+  <circle cx="400" cy="140" r="30" fill="url(#accent2)"/>
+  <rect x="340" y="195" width="120" height="14" rx="4" fill="#c7d2fe"/>
+
+  <rect x="540" y="80" width="180" height="170" rx="12" fill="#3730a3" stroke="#6366f1" stroke-width="2"/>
+  <circle cx="630" cy="140" r="30" fill="url(#accent2)"/>
+  <rect x="570" y="195" width="120" height="14" rx="4" fill="#c7d2fe"/>
+
+  <!-- Big Banner Center -->
+  <rect x="80" y="290" width="640" height="110" rx="12" fill="#1e1b4b" stroke="#818cf8" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="400" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#f8fafc" text-anchor="middle">
+    Project 2 Preview Placeholder
+  </text>
+  <text x="400" y="372" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#c7d2fe" text-anchor="middle">
+    Replace with your project screenshot (800 x 450 px)
+  </text>
+</svg>
